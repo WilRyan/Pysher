@@ -101,7 +101,7 @@ class Pusher(object):
         if auth is None:
             if channel_name.startswith('presence-'):
                 data['auth'] = self._generate_presence_token(channel_name)
-                data['channel_data'] = json.dumps(self.user_data)
+                data['channel_data'] = json.dumps(self.user_data, separators=(',', ':'))
             elif channel_name.startswith('private-'):
                 data['auth'] = self._generate_auth_token(channel_name)
         else:
